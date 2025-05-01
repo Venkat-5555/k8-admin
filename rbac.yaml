@@ -16,7 +16,7 @@ metadata:
   name: expense-trainee-rb
   namespace: expense
 roleRef:
-  apiGroup: rbac.authorization.k8s.io
+  apiGroup: rbac.authorization.k8s.io/v1
   kind: Role
   name: expense-trainee
 subjects:
