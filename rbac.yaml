@@ -68,7 +68,7 @@ metadata:
   name: expense-admin-rb
   namespace: expense
 subjects:
-- kind: user
+- kind: User
   name: siva # Name is case sensitive
   apiGroup: rbac.authorization.k8s.io
 roleRef:
