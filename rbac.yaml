@@ -55,7 +55,7 @@ kind: ClusterRole
 metadata:
   name: expense-cluster-admin
 rules:
-- apiGroups: ["rbac.authorization.k8s.io"]
+- apiGroups: [""]
   resources: ["nodes", "namespaces", "persistentvolumes"]
   verbs: ["get", "watch", "list"]
 
