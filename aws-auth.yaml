@@ -11,6 +11,10 @@ data:
       - expense-trainee
       userarn: arn:aws:iam::481155270892:user/vsks
       username: vsks
+    - groups:
+      - expense-cluster-admin
+      userarn: arn:aws:iam::481155270892:user/siva
+      username: siva
 kind: ConfigMap
 metadata:
   creationTimestamp: "2025-05-01T10:12:24Z"
