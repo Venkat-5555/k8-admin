@@ -23,4 +23,55 @@ subjects:
   - apiGroup: rbac.authorization.k8s.io
     name: vsks
     kind: User
-    
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: expense-admin
+  namespace: expense
+rules:
+  - apiGroups: ["*"] #indicates core api group
+    resources: ["*"]
+    verbs: ["*"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: expense-admin-rb
+  namespace: expense
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: expense-admin
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    name: siva
+    kind: User
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: expense-cluster-admin
+  namespace: expense
+rules:
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["nodes", "namespaces", "persistentvolumes"]
+  verbs: ["get", "watch", "list"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+# This cluster role binding allows anyone in the "manager" group to read secrets in any namespace.
+kind: ClusterRoleBinding
+metadata:
+  name: expense-admin-rb
+  namespace: expense
+subjects:
+- kind: user
+  name: siva # Name is case sensitive
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: expense-cluster-admin
+  apiGroup: rbac.authorization.k8s.io
